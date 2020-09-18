@@ -8,7 +8,7 @@
 # profile を追加する場合
 $ aws configure --profile my-new-profile
 AWS Access Key ID [None]: ***********
-AWS Secret Access Key [None]: ************8
+AWS Secret Access Key [None]: ************
 Default region name [None]: ap-northeast-1
 Default output format [None]: JSON
 
