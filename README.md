@@ -69,3 +69,48 @@ const keyName = this.node.tryGetContext('key_name');
 ```
 
 のような形で取り出す。
+
+## 6. Hands-on #2: AWSでディープラーニングの計算を走らせる
+
+- AMI の一覧を表示
+
+```
+$ aws ec2 describe-images --owners amazon
+```
+
+
+### :warning: ハマったところ
+
+デプロイしようとするとエラー
+
+1)
+
+```
+$ cdk deploy -c key_name="XXX"
+Unable to determine AMI from AMI map since stack is region-agnostic
+Subprocess exited with error 1
+```
+
+解決策: `region` を渡してあげる必要があったが、それは `lib/xxx-stack.ts` ではなく `bin/xxx.ts` に書く必要があった
+
+```ts
+const app = new cdk.App();
+new XXXStack(app, 'XXXStack', {
+  env: {
+    region: process.env.CDK_DEFAULT_REGION,
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+  }
+});
+```
+
+2)
+
+```
+You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.ama zon.com/contact-us/ec2-request to request an adjustment to this limit. (Service: AmazonEC2; Status Code: 400; Error Code: VcpuLimitExceeded; Request ID: *****; Proxy: null)
+```
+
+vCPU の上限を引き上げる必要があった
+
+![](./images/ec2-limits.png)
+
+![](./images/ec2-limits-request.png)
