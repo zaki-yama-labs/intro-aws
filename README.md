@@ -114,3 +114,16 @@ vCPU の上限を引き上げる必要があった
 ![](./images/ec2-limits.png)
 
 ![](./images/ec2-limits-request.png)
+
+
+## 7. Docker を用いた大規模機械学習システムの構築
+
+### 7.4 Elastic Container Service (ECS)
+
+- Docker を使った計算機クラスターをAWS上に作成するためのツール
+- タスク(Task)と呼ばれる単位で管理された計算ジョブを受け付ける
+
+### 7.5 Fargate
+
+- EC2 に似たものだが、ECS での利用に特化している
+  - EC2 に比べ、制約はあるかわりに設定しないといけない値が少ない
