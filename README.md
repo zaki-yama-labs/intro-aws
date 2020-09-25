@@ -10,7 +10,7 @@ $ aws configure --profile my-new-profile
 AWS Access Key ID [None]: ***********
 AWS Secret Access Key [None]: ************
 Default region name [None]: ap-northeast-1
-Default output format [None]: JSON
+Default output format [None]: json
 
 $ export AWS_PROFILE=my-new-profile
 ```
