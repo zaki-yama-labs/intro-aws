@@ -127,3 +127,62 @@ vCPU の上限を引き上げる必要があった
 
 - EC2 に似たものだが、ECS での利用に特化している
   - EC2 に比べ、制約はあるかわりに設定しないといけない値が少ない
+
+
+## 8. Hands-on #3: AWSで自動質問回答ボットを走らせる
+
+- ディープラーニングを使ったQ&Aボット
+- Transformer: ディープラーニングのモデル
+
+#### 8.3.1 ECS と Fargate
+
+
+### :warning: トラブルシューティング
+
+```ts
+const table = new dynamodb.Table(this, 'EcsClusterQaBot-Table', ...
+                                 ^^^^
+```
+
+`this` でエラー
+
+```
+Argument of type 'this' is not assignable to parameter of type 'Construct'.
+  Type 'Ch08Stack' is not assignable to type 'Construct'.
+    Types of property 'node' are incompatible.
+      Type 'import("/Users/yamazaki/repos/github.com/zaki-yama-labs/intro-aws/ch08/node_modules/@aws-cdk/core/lib/construct-compat").ConstructNode' is not assignable to type 'import("/Users/yamazaki/repos/github.com/zaki-yama-labs/intro-aws/ch08/node_modules/@aws-cdk/aws-iam/node_modules/@aws-cdk/core/lib/construct-compat").ConstructNode'.
+        Types have separate declarations of a private property 'host'.
+```
+
+-> `@aws-cdk/core` とそれ以外のパッケージのマイナーバージョンがずれてた (coreが `1.63.0`、それ以外が `^1.64.1`)
+
+
+2) `run_task.py` を実行エラー
+
+```
+$ python run_task.py ask "A giant peach was flowing in the river. She picked it up and brought it home. Later, a healthy baby was born from the peach. She named the baby Momotaro." "What is the name of the baby?" 
+Traceback (most recent call last):
+  File "run_task.py", line 173, in <module>
+    ask(args.context, args.question)
+  File "run_task.py", line 22, in ask
+    P = Params()
+  File "run_task.py", line 12, in __init__
+    self.ECS_CLUSTER_NAME = ssm_client.get_parameter(Name="ECS_CLUSTER_NAME")["Parameter"]["Value"]
+  File "/Users/yamazaki/repos/github.com/zaki-yama-labs/intro-aws/ch08/.venv/lib/python3.8/site-packages/botocore/client.py", line 337, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/Users/yamazaki/repos/github.com/zaki-yama-labs/intro-aws/ch08/.venv/lib/python3.8/site-packages/botocore/client.py", line 656, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ParameterNotFound: An error occurred (ParameterNotFound) when calling the GetParameter operation:
+```
+
+-> `ECS_CLUSTER_NAME` などは SSM に保存していた  
+https://gitlab.com/tomomano/intro-aws/-/blob/master/handson/03-qa-bot/app.py#L76-101
+
+---
+
+## リファレンス
+
+CDKのTypeScript用リファレンス
+
+- 8章 DynamoDB.Table https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-dynamodb.Table.html
+
