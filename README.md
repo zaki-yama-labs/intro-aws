@@ -178,6 +178,34 @@ botocore.errorfactory.ParameterNotFound: An error occurred (ParameterNotFound) w
 -> `ECS_CLUSTER_NAME` などは SSM に保存していた  
 https://gitlab.com/tomomano/intro-aws/-/blob/master/handson/03-qa-bot/app.py#L76-101
 
+
+## 10. Serverless architecture
+
+- サーバーレスとはなにか
+  - 従来のServerfulクラウド:
+    - クラウド上のサーバーをユーザーが独占してしまうので、使っても使わなくても起動時間に比例したコストがかかる
+  - Serverlessクラウド:
+    - 計算リソースの管理はすべてクラウドプロバイダー側が行う
+    - ユーザーは実行したいプログラムをクラウドに提出する
+    - -> コストはプログラムの実行に使用した計算の総量で決定される
+
+### 10.3 Lambda
+
+### 10.4 S3
+- サーバーレスなストレージシステム
+- ディスクサイズとか気にせずデータを保存でき、保存したデータのサイズに応じた料金がかかる
+
+### 10.5 DynamoDB
+
+### 10.6 その他
+
+- API Gateway
+- Fargate
+- Simple Notification Service (SNS)
+  - サーバーレスのサービス間(Lambda と DynamoDB など)でイベントをやり取りするためのサービス
+- Step Functions
+  - サーバーレスのサービス間のオーケストレーション
+
 ---
 
 ## リファレンス
