@@ -243,3 +243,20 @@ CDKのTypeScript用リファレンス
 
 - 8章 DynamoDB.Table https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-dynamodb.Table.html
 
+
+---
+
+## Advanced
+
+### 11.1. Lambda ハンズオン の Lambda とスクリプトを TypeScript に置き換えたい
+
+AWS SDK で Lambda の扱い方は  
+https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Lambda.html
+
+AWS SDK で `~/.aws/config` などを利用する方法は
+https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-region.html
+
+
+```
+$ AWS_SDK_LOAD_CONFIG=true npx ts-node scripts/invoke_one.ts Ch11Stack-LambdaHandlerXXXXXXXXX
+```
