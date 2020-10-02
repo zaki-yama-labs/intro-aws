@@ -1,0 +1,33 @@
+{
+  "name": "ch12",
+  "version": "0.1.0",
+  "bin": {
+    "ch12": "bin/ch12.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.64.1",
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "aws-cdk": "1.64.1",
+    "ts-node": "^8.1.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.64.1",
+    "@aws-cdk/aws-dynamodb": "^1.64.1",
+    "@aws-cdk/aws-lambda": "^1.64.1",
+    "@aws-cdk/aws-s3": "^1.64.1",
+    "@aws-cdk/aws-s3-deployment": "^1.64.1",
+    "@aws-cdk/aws-ssm": "^1.64.1",
+    "@aws-cdk/core": "1.64.1",
+    "source-map-support": "^0.5.16"
+  }
+}

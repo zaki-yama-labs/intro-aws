@@ -206,6 +206,35 @@ https://gitlab.com/tomomano/intro-aws/-/blob/master/handson/03-qa-bot/app.py#L76
 - Step Functions
   - サーバーレスのサービス間のオーケストレーション
 
+## 11. Hands-on #4: サーバーレス入門
+
+- Lambda
+- DynamoDB
+  - partition key: テーブル内のレコードごとに固有のID
+
+
+## 12.
+
+### :warning: ハマったところ
+
+```
+ ❌  Ch12Stack failed: Error: This stack uses assets, so the toolkit stack must be deployed to the environment (Run "cdk bootstrap aws://144232864051/ap-northeast-1")
+    at Object.addMetadataAssetsToManifest (/Users/yamazaki/.anyenv/envs/nodenv/versions/12.18.3/lib/node_modules/aws-cdk/lib/assets.ts:27:11)
+    at Object.deployStack (/Users/yamazaki/.anyenv/envs/nodenv/versions/12.18.3/lib/node_modules/aws-cdk/lib/api/deploy-stack.ts:207:29)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at CdkToolkit.deploy (/Users/yamazaki/.anyenv/envs/nodenv/versions/12.18.3/lib/node_modules/aws-cdk/lib/cdk-toolkit.ts:181:24)
+    at initCommandLine (/Users/yamazaki/.anyenv/envs/nodenv/versions/12.18.3/lib/node_modules/aws-cdk/bin/cdk.ts:197:9)
+This stack uses assets, so the toolkit stack must be deployed to the environment (Run "cdk bootstrap aws://xxx/ap-northeast-1")
+```
+
+-> コンソールに出てるように
+
+```
+$ cdk bootstrap aws://xxx/ap-northeast-1
+```
+
+を実行したらうまくいった。
+
 ---
 
 ## リファレンス
