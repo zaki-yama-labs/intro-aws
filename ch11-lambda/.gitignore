@@ -1,6 +1,7 @@
 .venv
 
 *.js
+!lib/lambda-handlers/index.js
 !jest.config.js
 *.d.ts
 node_modules
