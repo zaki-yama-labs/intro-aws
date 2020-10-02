@@ -1,7 +1,10 @@
-[AWSによるクラウド入門](https://tomomano.gitlab.io/intro-aws/)
+[AWSによるクラウド入門](https://tomomano.gitlab.io/intro-aws/) (in TypeScript)
 ====================
 
+東京大学計数工学科の講義「AWSによるクラウド入門」を写経したリポジトリ。  
+元の資料ではすべて Python で書かれていますが、CDK の部分（および、一部の Lambda 関数など）は TypeScript で書き直しています。
 
+## メモ
 #### 3.5.3. ミニ・ハンズオン: AWS CLI を使ってみよう
 
 ```sh
